@@ -16,6 +16,39 @@
 	<title>Comments</title>
 </head>
 <body>
-	<p>hello</p>
+	
+	<div class="comments">
+		<div class="container">
+			<div class="comments__container">
+				<h1 class="comments__title">Комментарии</h1>
+				<div class="comments__error"></div>
+				<form action="#" class="form">
+					<h2 class="form__title">Добавить комментарий</h2>
+					<div class="form__block">
+						<label for="form__name">Имя:*</label>
+						<input type="name" id="form__name" class="form__input" placeholder="Введите ваше имя...">
+					</div>
+					<div class="form__block">
+						<label for="form__text">Текст:*</label>
+						<textarea name="form__text" id="form__text" cols="30" rows="8" placeholder="Введите текст..."></textarea>
+					</div>
+					<div class="form__block">
+						<label for="form__date">Дата добавления: (<strong>сегодня</strong> по умолчанию)</label>
+						<div class="form__date-inputs">
+							<input type="number" min="0" max="31" name="form__date-day" id="form__date" class="form__input-date" placeholder="Число...">
+							<input type="number" min="0" max="12" name="form__date-month" id="form__date" class="form__input-date" placeholder="Месяц...">
+							<input type="number" min="2010" max="2023" name="form__date-year" id="form__date" class="form__input-date" placeholder="Год...">
+						</div>
+					</div>
+					<!-- <div class="form__block form__block-datenow">
+						<label class="form-check-label" for="flexCheckChecked">Сегоднейшая дата</label>
+						<input name="publish" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+					</div> -->
+					<button type="submit" class="form__button" title="Добавить">Опубликовать</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

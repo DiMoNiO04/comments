@@ -1,3 +1,103 @@
+h1, h2{
+	margin: 0;
+	padding: 0;
+}
+
 body{
 	font-family: 'Lato', sans-serif;
+	background: rgb(78, 78, 78);
 }
+
+.container{
+	max-width: 1400px;
+	box-sizing: border-box;
+	background-color: aliceblue;
+	margin: 40px auto 0 auto;
+	padding: 15px;
+	border: 3px solid black;
+	border-radius: 10px;
+}
+
+.comments{
+	padding: 0 15px;
+	&__container{
+		display: flex;
+    	flex-direction: column;
+    	row-gap: 30px;
+	}
+	&__title{
+		text-align: center;
+		font-size: 40px;
+		line-height: 50px;
+		font-style: italic;
+		text-decoration: underline;
+	}
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	row-gap: 24px;
+	width: 40%;
+	margin: auto 10% auto auto;
+	&__title{
+		font-size: 28px;
+		line-height: 32px;
+		margin: 0 auto;
+	}
+}
+
+.form__block{
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+	label{
+		font-style: italic;
+		font-size: 20px;
+		font-weight: 700;
+	}
+	input,
+	textarea{
+		border-radius: 10px;
+		border: 1px solid black;
+		padding: 12px;
+		max-width: 100%;
+	}
+	.form__input-date{
+		border-radius: 6px;
+		border: 1px solid black;
+		padding: 10px;
+		width: 100%;
+	}
+}
+
+.form__button{
+	width: 40%;
+	border-radius: 10px;
+	padding: 12px 0;
+	border: 3px solid black;
+	margin: auto 0 auto auto;
+	font-weight: 700;
+	font-size: 20px;
+	background: greenyellow;
+	&:hover{
+		cursor: pointer;
+		background: green;
+		transition: all 0.3s ease-in-out;
+	}
+}
+
+.form__date-inputs{
+	display: flex;
+	column-gap: 20px;
+}
+
+// .form__block-datenow{
+// 	flex-direction: row;
+// 	column-gap: 20px;
+// 	align-items: center;
+// 	input{
+// 		width: 22px;
+// 		height: 22px;
+// 	}
+// }
