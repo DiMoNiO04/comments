@@ -4,26 +4,27 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-	<link rel="manifest" href="./favicons/site.webmanifest">
-	<link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="shortcut icon" href="./favicons/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png">
+	<link rel="manifest" href="./assets/favicons/site.webmanifest">
+	<link rel="mask-icon" href="./assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="./assets/favicons/favicon.ico">
 	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="msapplication-config" content="./favicons/browserconfig.xml">
+	<meta name="msapplication-config" content="./assets/favicons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 	<title>Comments</title>
 </head>
 <body>
 	
-	<div class="comments">
+	<main class="main">
 		<div class="container">
-			<div class="comments__container">
-				<h1 class="comments__title">Комментарии</h1>
-				<div class="comments__error"></div>
+			<h1 class="add-comments__title">Комментарии</h1>
+
+			<div class="add-comments">
+				<div class="add-comments__error"></div>
 				<form action="#" class="form">
-					<h2 class="form__title">Добавить комментарий</h2>
+					<h2 class="add-form__title">Добавить комментарий</h2>
 					<div class="form__block">
 						<label for="form__name">Имя:*</label>
 						<input type="name" id="form__name" class="form__input" placeholder="Введите ваше имя...">
@@ -47,8 +48,62 @@
 					<button type="submit" class="form__button" title="Добавить">Опубликовать</button>
 				</form>
 			</div>
+
+			<div class="comments">
+				<div class="comment">
+					<div class="comment__block">
+						<div class="comment__name">Дмитрий Разумов</div>
+						<div class="comment__datatime">
+							<div class="comment__data">12.04.2022</div>
+							<div class="comment__time">12:04:45</div>
+						</div>
+					</div>
+					<div class="comment__block">
+						<div class="comment__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, expedita asperiores iste perspiciatis dignissimos exercitationem dicta saepe perferendis veniam ad debitis nihil quas ipsa magni? Ducimus cum est consectetur praesentium.</div>
+					</div>
+					<div class="comment__block comment__icons">
+						<div class="comment__icon comment__icon-like" title="Like"></div>
+						<div class="comment__icon comment__icon-delete" title="Delete"></div>
+					</div>
+				</div>
+
+				<div class="comment">
+					<div class="comment__block">
+						<div class="comment__name">Дмитрий Разумов</div>
+						<div class="comment__datatime">
+							<div class="comment__data">12.04.2022</div>
+							<div class="comment__time">12:04:45</div>
+						</div>
+					</div>
+					<div class="comment__block">
+						<div class="comment__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, expedita asperiores iste perspiciatis dignissimos exercitationem dicta saepe perferendis veniam ad debitis nihil quas ipsa magni? Ducimus cum est consectetur praesentium.</div>
+					</div>
+					<div class="comment__block comment__icons">
+						<div class="comment__icon comment__icon-like" title="Like"></div>
+						<div class="comment__icon comment__icon-delete" title="Delete"></div>
+					</div>
+				</div>
+
+				<div class="comment">
+					<div class="comment__block">
+						<div class="comment__name">Дмитрий Разумов</div>
+						<div class="comment__datatime">
+							<div class="comment__data">12.04.2022</div>
+							<div class="comment__time">12:04:45</div>
+						</div>
+					</div>
+					<div class="comment__block">
+						<div class="comment__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, expedita asperiores iste perspiciatis dignissimos exercitationem dicta saepe perferendis veniam ad debitis nihil quas ipsa magni? Ducimus cum est consectetur praesentium.</div>
+					</div>
+					<div class="comment__block comment__icons">
+						<div class="comment__icon comment__icon-like" title="Like"></div>
+						<div class="comment__icon comment__icon-delete" title="Delete"></div>
+					</div>
+				</div>
+			</div>
+
 		</div>
-	</div>
+	</main>
 
 </body>
 </html>
