@@ -10,7 +10,6 @@ import { validate } from "./validationForm";
 
 
 
-
 const clearInputs = () => {
 	commentName.value = '';
 	commentText.value = '';

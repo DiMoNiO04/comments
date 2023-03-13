@@ -19,42 +19,63 @@ const checkLengthInput = (input, length) => input.value.length < length && input
 const checkOkInput = (input) => /^[0-9a-zA-Z]*$/.test(input.value);
 
 
+
 function validateName() {
 
-	if(checkLengthInput(commentName, 5)) {
-		addError(commentName, 'Введите больше символов!');
-		return false;
-	}
-
-	if(checkEmptyInput(commentName)) {
-		addError(commentName, 'Заполните поле!');
-		return false;
-	}
-
-	if(!checkOkInput(commentName)){
-		addError(commentName, 'Допустимы только цифры и буквы!');
-		return false;
-	}
+	if(checkLengthInput(commentName, 5)) return false;
+	if(checkEmptyInput(commentName)) return false;
+	if(!checkOkInput(commentName)) return false;
 
 	removeError(commentName);
 	return true;
 }
 
+commentName.addEventListener('blur', () => {
+
+	if(checkLengthInput(commentName, 5)) {
+		addError(commentName, 'Введите больше символов!');
+	}
+
+	if(checkEmptyInput(commentName)) {
+		addError(commentName, 'Заполните поле!');
+	}
+
+	if(!checkOkInput(commentName)){
+		addError(commentName, 'Допустимы только цифры и буквы!');
+	}
+})
+
+commentName.addEventListener('focus', () => {
+	removeError(commentName)
+}) 
+
+
+
+
 function validateText() {
 
-	if(checkLengthInput(commentText, 10)) {
-		addError(commentText, 'Введите больше символов!');
-		return false;
-	}
-	
-	if(checkEmptyInput(commentText)) {
-		addError(commentText, 'Заполните поле!');
-		return false;
-	}
+	if(checkLengthInput(commentText, 10)) return false;
+	if(checkEmptyInput(commentText)) return false;
 	
 	removeError(commentText);
 	return true;
 }
+
+commentText.addEventListener('blur', () => {
+
+	if(checkLengthInput(commentText, 10)) {
+		addError(commentText, 'Введите больше символов!');
+	}
+	
+	if(checkEmptyInput(commentText)) {
+		addError(commentText, 'Заполните поле!');
+	}
+})
+
+commentText.addEventListener('focus', () => {
+	removeError(commentText)
+}) 
+
 
 export function validate() {
 
