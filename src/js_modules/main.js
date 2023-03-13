@@ -1,8 +1,9 @@
 'use strict';
 
-import { comment } from "postcss";
-import { commentData } from "./const";
+
+import { commentData } from "./variables";
 import { dateConverter } from "./data";
+import { timeConverter } from "./time";
 
 
 const submitButton = document.querySelector('.form__button');
@@ -12,7 +13,6 @@ const commentsBody = document.querySelector('.comments');
 
 
 let comments = [];
-let errors = [];
 
 
 submitButton.addEventListener('click', (event) => {
@@ -23,43 +23,21 @@ submitButton.addEventListener('click', (event) => {
 		date: commentData.value
 	}
 
-
 	clearInputs();
 
 	comments.push(comment);
-
 	// saveComments();
 	showComments(comment);
 })
-
 
 const clearInputs = () => {
 	commentName.value = '';
 	commentText.value = '';
 }
 
-
 // function saveComments() {
 // 	localStorage.setItem('comments', JSON.stringify(comments))
 // }
-
-
-const timeConverter = () => {
-	let datetime = new Date();
-	let hours = datetime.getHours();
-	let minutes = datetime.getMinutes();
-
-	if(hours < 10){
-		hours = "0" + hours;
-	}
-
-	if(minutes < 10) {
-		minutes = "0" + minutes;
-	}
-
-	return hours + ":" + minutes; 
-}
-
 
 function showComments(comment) {
 

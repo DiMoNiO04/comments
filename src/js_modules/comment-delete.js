@@ -1,6 +1,6 @@
 'use strict';
 
-import {commentsBody} from './const';
+import {commentsBody} from './variables';
 
 
 const deleteComment = (event) => {

@@ -1,25 +1,20 @@
 'use strict';
 
-import { commentData } from "./const";
-import { TODAY } from "./const";
-import { YESTERDAY } from "./const";
-import {  errors } from "./const"
+import { commentData } from "./variables";
+import { TODAY } from "./variables";
+import { YESTERDAY } from "./variables";
+import { errors } from "./variables";
+import { dayNow } from "./variables";
+import { monthNow } from "./variables";
+import { yearNow } from "./variables";
 
 
-let dateNow = new Date();
-let dayNow = dateNow.getDate();
-let monthNow = dateNow.getMonth() + 1;
-let yearNow = dateNow.getFullYear();
 
-
-const checkSetDefaultMaxDate = (xNow) => (xNow < 10) ? xNow = "0" + xNow : xNow
+const checkSetDefaultMaxDate = (data) => (data < 10) ? data = "0" + data : data;
 
 function setDefaultMaxDate() {
 
-	dayNow = checkSetDefaultMaxDate(dayNow);
-	monthNow = checkSetDefaultMaxDate(monthNow);
-
-	let defaultData = yearNow + '-' + monthNow + '-' + dayNow;
+	let defaultData = yearNow + '-' + checkSetDefaultMaxDate(monthNow) + '-' + checkSetDefaultMaxDate(dayNow);
 	let maxData = defaultData;
 
 	commentData.value = defaultData;
@@ -32,15 +27,17 @@ setDefaultMaxDate();
 
 const getElementsCommData = () => commentData.value.split('-');
 const checkDate = () => commentData.value > commentData.max || commentData.value < commentData.min;
+const checkToday = (arrCommData) => Number(arrCommData[0]) === yearNow && Number(arrCommData[1]) === Number(monthNow) && Number(arrCommData[2]) === Number(dayNow);
+const checkYesterday = (arrCommData) => Number(arrCommData[0]) === yearNow && Number(arrCommData[1]) === Number(monthNow) && Number(arrCommData[2]) === Number(dayNow) - 1;
 
 export function dateConverter() {
 
 	let arrCommData = getElementsCommData();
 
 	if(!checkDate()) {
-		if(Number(arrCommData[0]) === yearNow && Number(arrCommData[1]) === Number(monthNow) && Number(arrCommData[2]) === Number(dayNow)) {
+		if(checkToday(arrCommData)) {
 			return TODAY;
-		} else if(Number(arrCommData[0]) === yearNow && Number(arrCommData[1]) === Number(monthNow) && Number(arrCommData[2]) === Number(dayNow) - 1) {
+		} else if(checkYesterday(arrCommData)) {
 			return YESTERDAY;
 		} else{
 			return arrCommData[2] + "." + arrCommData[1] + "." + arrCommData[0];
