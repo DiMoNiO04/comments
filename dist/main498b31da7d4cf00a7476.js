@@ -75,9 +75,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/index.scss");
 /* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.html */ "./src/index.html");
-/* harmony import */ var _js_modules_main_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js_modules/main.js */ "./src/js_modules/main.js");
-/* harmony import */ var _js_modules_comment_like_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js_modules/comment-like.js */ "./src/js_modules/comment-like.js");
-/* harmony import */ var _js_modules_comment_delete_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js_modules/comment-delete.js */ "./src/js_modules/comment-delete.js");
+/* harmony import */ var _js_modules_submit_form_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js_modules/submit-form.js */ "./src/js_modules/submit-form.js");
+/* harmony import */ var _js_modules_like_comment_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js_modules/like-comment.js */ "./src/js_modules/like-comment.js");
+/* harmony import */ var _js_modules_delete_comment_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js_modules/delete-comment.js */ "./src/js_modules/delete-comment.js");
 /* harmony import */ var _js_modules_data_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js_modules/data.js */ "./src/js_modules/data.js");
 
 
@@ -86,51 +86,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/***/ }),
-
-/***/ "./src/js_modules/comment-delete.js":
-/*!******************************************!*\
-  !*** ./src/js_modules/comment-delete.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./src/js_modules/variables.js");
-
-
-
-const deleteComment = event => {
-  if (event.target.id !== 'comment__delete') {
-    return;
-  }
-  let comment = event.target.closest('.comment');
-  comment.remove();
-};
-_variables__WEBPACK_IMPORTED_MODULE_0__.commentsBody.addEventListener('click', deleteComment);
-
-/***/ }),
-
-/***/ "./src/js_modules/comment-like.js":
-/*!****************************************!*\
-  !*** ./src/js_modules/comment-like.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./src/js_modules/variables.js");
-
-
-
-const likeDislikeComment = event => {
-  if (event.target.id != 'comment__like') {
-    return;
-  }
-  event.target.classList.toggle('like');
-};
-_variables__WEBPACK_IMPORTED_MODULE_0__.commentsBody.addEventListener('click', likeDislikeComment);
 
 /***/ }),
 
@@ -162,13 +117,15 @@ function setDefaultMaxDate() {
   _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.value = defaultData;
   _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.max = maxData;
 }
-setDefaultMaxDate();
+document.addEventListener('DOMContentLoaded', setDefaultMaxDate);
 const getElementsCommData = () => _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.value.split('-');
+const checkCompletion = arrCommData => arrCommData.length === 1;
 const checkDate = () => _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.value > _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.max || _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.value < _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.min;
 const checkToday = arrCommData => Number(arrCommData[0]) === _variables__WEBPACK_IMPORTED_MODULE_0__.yearNow && Number(arrCommData[1]) === Number(_variables__WEBPACK_IMPORTED_MODULE_0__.monthNow) && Number(arrCommData[2]) === Number(_variables__WEBPACK_IMPORTED_MODULE_0__.dayNow);
 const checkYesterday = arrCommData => Number(arrCommData[0]) === _variables__WEBPACK_IMPORTED_MODULE_0__.yearNow && Number(arrCommData[1]) === Number(_variables__WEBPACK_IMPORTED_MODULE_0__.monthNow) && Number(arrCommData[2]) === Number(_variables__WEBPACK_IMPORTED_MODULE_0__.dayNow) - 1;
 function dateConverter() {
   let arrCommData = getElementsCommData();
+  if (checkCompletion(arrCommData)) return _variables__WEBPACK_IMPORTED_MODULE_0__.TODAY;
   if (!checkDate()) {
     if (checkToday(arrCommData)) {
       return _variables__WEBPACK_IMPORTED_MODULE_0__.TODAY;
@@ -183,14 +140,62 @@ function dateConverter() {
 
 /***/ }),
 
-/***/ "./src/js_modules/main.js":
-/*!********************************!*\
-  !*** ./src/js_modules/main.js ***!
-  \********************************/
+/***/ "./src/js_modules/delete-comment.js":
+/*!******************************************!*\
+  !*** ./src/js_modules/delete-comment.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./src/js_modules/variables.js");
+
+
+
+const deleteComment = event => {
+  if (event.target.id !== 'comment__delete') {
+    return;
+  }
+  let comment = event.target.closest('.comment');
+  comment.remove();
+};
+_variables__WEBPACK_IMPORTED_MODULE_0__.commentsBody.addEventListener('click', deleteComment);
+
+/***/ }),
+
+/***/ "./src/js_modules/like-comment.js":
+/*!****************************************!*\
+  !*** ./src/js_modules/like-comment.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./src/js_modules/variables.js");
+
+
+
+const likeDislikeComment = event => {
+  if (event.target.id != 'comment__like') {
+    return;
+  }
+  event.target.classList.toggle('like');
+};
+_variables__WEBPACK_IMPORTED_MODULE_0__.commentsBody.addEventListener('click', likeDislikeComment);
+
+/***/ }),
+
+/***/ "./src/js_modules/showComment.js":
+/*!***************************************!*\
+  !*** ./src/js_modules/showComment.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showComments": () => (/* binding */ showComments)
+/* harmony export */ });
 /* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./src/js_modules/variables.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data */ "./src/js_modules/data.js");
 /* harmony import */ var _time__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./time */ "./src/js_modules/time.js");
@@ -199,34 +204,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const submitButton = document.querySelector('.form__button');
-const commentName = document.getElementById('form__name');
-const commentText = document.getElementById('form__text');
-const commentsBody = document.querySelector('.comments');
-let comments = [];
-submitButton.addEventListener('click', event => {
-  event.preventDefault();
-  let comment = {
-    name: commentName.value,
-    text: commentText.value,
-    date: _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.value
-  };
-  clearInputs();
-  comments.push(comment);
-  // saveComments();
-  showComments(comment);
-});
-const clearInputs = () => {
-  commentName.value = '';
-  commentText.value = '';
-};
-
-// function saveComments() {
-// 	localStorage.setItem('comments', JSON.stringify(comments))
-// }
-
 function showComments(comment) {
-  commentsBody.innerHTML += `
+  _variables__WEBPACK_IMPORTED_MODULE_0__.commentsBody.innerHTML += `
 			<div class="comment">
 				<div class="comment__block">
 					<div class="comment__name">${comment.name}</div>
@@ -247,6 +226,41 @@ function showComments(comment) {
 			</div>
 		`;
 }
+
+/***/ }),
+
+/***/ "./src/js_modules/submit-form.js":
+/*!***************************************!*\
+  !*** ./src/js_modules/submit-form.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./src/js_modules/variables.js");
+/* harmony import */ var _showComment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./showComment */ "./src/js_modules/showComment.js");
+
+
+
+
+
+
+
+const clearInputs = () => {
+  _variables__WEBPACK_IMPORTED_MODULE_0__.commentName.value = '';
+  _variables__WEBPACK_IMPORTED_MODULE_0__.commentText.value = '';
+};
+const getDataForm = () => {
+  return {
+    name: _variables__WEBPACK_IMPORTED_MODULE_0__.commentName.value,
+    text: _variables__WEBPACK_IMPORTED_MODULE_0__.commentText.value,
+    date: _variables__WEBPACK_IMPORTED_MODULE_0__.commentData.value
+  };
+};
+_variables__WEBPACK_IMPORTED_MODULE_0__.submitButton.addEventListener('click', () => {
+  (0,_showComment__WEBPACK_IMPORTED_MODULE_1__.showComments)(getDataForm());
+  clearInputs();
+});
 
 /***/ }),
 
@@ -283,6 +297,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TODAY": () => (/* binding */ TODAY),
 /* harmony export */   "YESTERDAY": () => (/* binding */ YESTERDAY),
 /* harmony export */   "commentData": () => (/* binding */ commentData),
+/* harmony export */   "commentName": () => (/* binding */ commentName),
+/* harmony export */   "commentText": () => (/* binding */ commentText),
 /* harmony export */   "commentsBody": () => (/* binding */ commentsBody),
 /* harmony export */   "date": () => (/* binding */ date),
 /* harmony export */   "dayNow": () => (/* binding */ dayNow),
@@ -290,12 +306,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "hours": () => (/* binding */ hours),
 /* harmony export */   "minutes": () => (/* binding */ minutes),
 /* harmony export */   "monthNow": () => (/* binding */ monthNow),
+/* harmony export */   "submitButton": () => (/* binding */ submitButton),
 /* harmony export */   "yearNow": () => (/* binding */ yearNow)
 /* harmony export */ });
 
 
 const commentsBody = document.querySelector('.comments');
 const commentData = document.querySelector('.data');
+const submitButton = document.querySelector('.form__button');
+const commentName = document.getElementById('form__name');
+const commentText = document.getElementById('form__text');
 const TODAY = "сегодня, ";
 const YESTERDAY = "вчера, ";
 let errors = [];
@@ -11380,4 +11400,4 @@ module.exports = __webpack_require__.p + "assets/fonts/lato-v23-latin-regular.wo
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main470780f01920315c3d60.js.map
+//# sourceMappingURL=main498b31da7d4cf00a7476.js.map

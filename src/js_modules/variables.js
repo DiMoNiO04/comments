@@ -2,6 +2,9 @@
 
 export const commentsBody = document.querySelector('.comments');
 export const commentData = document.querySelector('.data');
+export const submitButton = document.querySelector('.form__button');
+export const commentName = document.getElementById('form__name');
+export const commentText = document.getElementById('form__text');
 
 export const TODAY = "сегодня, ";
 export const YESTERDAY = "вчера, ";

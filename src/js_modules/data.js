@@ -21,18 +21,22 @@ function setDefaultMaxDate() {
 	commentData.max = maxData;
 }
 
-setDefaultMaxDate();
+document.addEventListener('DOMContentLoaded', setDefaultMaxDate);
 
 
 
 const getElementsCommData = () => commentData.value.split('-');
+const checkCompletion = (arrCommData) => arrCommData.length === 1;
 const checkDate = () => commentData.value > commentData.max || commentData.value < commentData.min;
 const checkToday = (arrCommData) => Number(arrCommData[0]) === yearNow && Number(arrCommData[1]) === Number(monthNow) && Number(arrCommData[2]) === Number(dayNow);
 const checkYesterday = (arrCommData) => Number(arrCommData[0]) === yearNow && Number(arrCommData[1]) === Number(monthNow) && Number(arrCommData[2]) === Number(dayNow) - 1;
 
+
 export function dateConverter() {
 
 	let arrCommData = getElementsCommData();
+	
+	if(checkCompletion(arrCommData)) return TODAY;
 
 	if(!checkDate()) {
 		if(checkToday(arrCommData)) {
