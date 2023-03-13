@@ -67,12 +67,6 @@ body{
 		padding: 12px;
 		max-width: 100%;
 	}
-	.form__input-date{
-		border-radius: 6px;
-		border: 1px solid black;
-		padding: 10px;
-		width: 100%;
-	}
 }
 
 .form__button{
@@ -90,21 +84,6 @@ body{
 		transition: all 0.3s ease-in-out;
 	}
 }
-
-.form__date-inputs{
-	display: flex;
-	column-gap: 20px;
-}
-
-// .form__block-datenow{
-// 	flex-direction: row;
-// 	column-gap: 20px;
-// 	align-items: center;
-// 	input{
-// 		width: 22px;
-// 		height: 22px;
-// 	}
-// }
 //-----------------Comments end-------------
 
 
@@ -153,7 +132,8 @@ body{
 	justify-content: flex-end;
 }
 
-.comment__icon{
+.comment__like,
+.comment__delete{
 	display: inline-block;
 	width: 30px;
 	height: 30px;
@@ -162,17 +142,19 @@ body{
 		transform: scale(1.2);
 		transition: all 0.3s ease-in-out;
 	}
-	&-delete{
-		background: url('./assets/img/delete.svg') no-repeat center;
-		background-size: cover;
+}
+
+.comment__like{
+	background: url("./assets/img/like.svg") no-repeat center;
+	background-size: cover;
+	&.like{
+		background: url("./assets/img/like-red.svg") no-repeat center;
+		background-size: cover;;
 	}
-	&-like{
-		background: url("./assets/img/like.svg") no-repeat center;
-		background-size: cover;
-		&.active{
-			background: url("./assets/img/like-red.svg") no-repeat center;
-			background-size: cover;;
-		}
-	}
+}
+
+.comment__delete{
+	background: url('./assets/img/delete.svg') no-repeat center;
+	background-size: cover;
 }
 //------------Comments end--------------------
