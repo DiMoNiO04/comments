@@ -3,9 +3,12 @@
 
 import { commentData } from "./variables";
 import { showComments } from "./showComment";
-import { submitButton } from "./variables";
 import { commentName } from "./variables";
 import { commentText } from "./variables";
+import { form } from "./variables";
+import { validate } from "./validationForm";
+
+
 
 
 const clearInputs = () => {
@@ -21,7 +24,12 @@ const getDataForm = () => {
 	}
 }
 
-submitButton.addEventListener('click', () => {
-	showComments(getDataForm());
-	clearInputs();
+form.addEventListener('submit', (event) => {
+
+	event.preventDefault();
+	
+	if(validate()){
+		showComments(getDataForm());
+		clearInputs();
+	}
 })
