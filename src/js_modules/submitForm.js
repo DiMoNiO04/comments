@@ -7,7 +7,7 @@ import { commentName } from "./variables";
 import { commentText } from "./variables";
 import { form } from "./variables";
 import { validate } from "./validationForm";
-
+ 
 
 
 const clearInputs = () => {
@@ -23,12 +23,15 @@ const getDataForm = () => {
 	}
 }
 
-form.addEventListener('submit', (event) => {
 
-	event.preventDefault();
+form.onsubmit = function() {
 	
-	if(validate()){
-		showComments(getDataForm());
-		clearInputs();
+	if (!validate()) {
+		return false;
 	}
-})
+
+	showComments(getDataForm());
+	clearInputs();
+
+	return false;
+};

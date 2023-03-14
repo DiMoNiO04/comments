@@ -14,7 +14,7 @@
 	<meta name="msapplication-config" content="assets/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 	<title>Comments</title>
-<script defer src="main498b31da7d4cf00a7476.js"></script></head>
+<script defer src="main9af94a4d9d1242f29b94.js"></script></head>
 <body>
 	
 	<main class="main">
@@ -23,15 +23,18 @@
 
 			<div class="add-comments">
 				<div class="add-comments__error"></div>
+				
 				<form action="#" class="form">
 					<h2 class="add-form__title">Добавить комментарий</h2>
 					<div class="form__block">
-						<label for="form__name">Имя:*</label>
+						<label for="form__name">Имя:*<span> (Не менее 5 символов. Допустимы только буквы и цифры)</span></label>
 						<input name="form__name" type="name" id="form__name" class="form__input" placeholder="Введите ваше имя...">
+						<div class="form__input-error"></div>
 					</div>
 					<div class="form__block">
-						<label for="form__text">Текст:*</label>
-						<textarea name="form__text" id="form__text" cols="30" rows="8" placeholder="Введите текст..."></textarea>
+						<label for="form__text">Текст:*<span> (Не менее 10 символов)</span></label>
+						<input name="form__text" id="form__text" class="form__input" cols="30" rows="8" placeholder="Введите текст...">
+						<div class="form__input-error"></div>
 					</div>
 					<div class="form__block">
 						<label for="form__date">Дата добавления: (<strong>сегодня</strong> по умолчанию)</label>
@@ -39,7 +42,7 @@
 					</div>
 					<button type="submit" class="form__button" title="Добавить">Опубликовать</button>
 				</form>
-			
+
 			</div>
 
 			<div class="comments">
