@@ -35,24 +35,17 @@ function validateName() {
 	return true;
 }
 
-commentName.addEventListener('blur', () => {
-
-	if(checkLengthInput(commentName, 5)) {
-		addError(commentName, 'Введите больше символов!');
-	}
-
-	if(checkEmptyInput(commentName)) {
-		addError(commentName, 'Заполните поле!');
-	}
-
-	if(!checkOkInput(commentName)){
-		addError(commentName, 'Допустимы только цифры и буквы!');
+commentName.addEventListener('keyup', () => {
+	if(!validateName()) {
+		if(checkLengthInput(commentName, 5)) {
+			addError(commentName, 'Введите больше символов!');
+		}
+			
+		if(!checkOkInput(commentName)){
+			addError(commentName, 'Допустимы только цифры и буквы!');
+		}
 	}
 })
-
-commentName.addEventListener('focus', () => {
-	removeError(commentName)
-}) 
 
 
 
@@ -70,20 +63,13 @@ function validateText() {
 	return true;
 }
 
-commentText.addEventListener('blur', () => {
-
-	if(checkLengthInput(commentText, 10)) {
-		addError(commentText, 'Введите больше символов!');
-	}
-	
-	if(checkEmptyInput(commentText)) {
-		addError(commentText, 'Заполните поле!');
+commentText.addEventListener('keyup', () => {
+	if(!validateText()){
+		if(checkLengthInput(commentText, 10)) {
+			addError(commentText, 'Введите больше символов!');
+		}
 	}
 })
-
-commentText.addEventListener('focus', () => {
-	removeError(commentText)
-}) 
 
 
 export function validate() {
